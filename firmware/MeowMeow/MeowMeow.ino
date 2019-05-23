@@ -65,7 +65,7 @@ https://github.com/adafruit/Adafruit_FreeTouch
 ////////////////////////
 // DEBUG DEFINITIONS ////               
 /////////////////////////
-//#define DEBUG
+#define DEBUG
 //#define DEBUG2 
 //#define DEBUG3
 //#define DEBUG_MOUSE
@@ -98,6 +98,9 @@ int pressThreshold;
 int releaseThreshold;
 boolean inputChanged;
 int mouseMovementCounter = 0; // for sending mouse movement events at a slower interval
+boolean flag = 0;
+long datastant=0;
+
 
 int mouseHoldCount[NUM_INPUTS]; // used to store mouse movement hold data
 
@@ -151,6 +154,7 @@ void loop() {
   updateInputStates();
   sendMouseButtonEvents();
   sendMouseMovementEvents();
+  flag=1;
   #ifdef DEBUG
     delay(100);
   #endif
@@ -173,10 +177,18 @@ void updateMeasurementBuffers() {
     // make the new measurement
     long newState = (p[i]->measure());
     boolean newMeasurement = ((abs(newState - inputs[i].touch) > CALIBRATION) ? 0 : 1);
-
+    array datastart;
+    
+    
     #ifdef DEBUG
+    if (flag==0)
+     {
+      for(i=0 ; i<10; ++i)
+       datastart = p[i];
+      }   
       Serial.print(p[i]->measure());
       Serial.print(",");
+      
     #endif
     // invert so that true means the switch is closed
     newMeasurement = !newMeasurement; 
