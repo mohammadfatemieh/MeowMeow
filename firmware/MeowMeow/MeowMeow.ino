@@ -9,7 +9,7 @@ Original Creation Date: April 17, 2018
 https://github.com/ElectronicCats/MeowMeow
 
 Este ejemplos demuestra el funcionamiento basico del kit Meow Meow
-http://electroniccats.com
+http://electroniccats.comad
 
 Especificaciones del entorno de Desarrollo:
   IDE: Arduino 1.8.4
@@ -65,7 +65,7 @@ https://github.com/adafruit/Adafruit_FreeTouch
 ////////////////////////
 // DEBUG DEFINITIONS ////               
 /////////////////////////
-#define DEBUG
+//#define DEBUG
 //#define DEBUG2 
 //#define DEBUG3
 //#define DEBUG_MOUSE
@@ -563,51 +563,51 @@ void calibrate(){
   if (dataA0>900)
   {
     Serial.print("Alta capacitancia A0 S");
-    qt_1= Adafruit_FreeTouch(A0, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+     Adafruit_FreeTouch qt_1= Adafruit_FreeTouch(A0, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
   if (dataA1>900)
   {
     Serial.print("Alta capacitancia A1 D");
-    qt_1= Adafruit_FreeTouch(A1, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+     Adafruit_FreeTouch qt_1= Adafruit_FreeTouch(A1, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
   if (dataA2>900)
   {
     Serial.print("Alta capacitancia A2 >");
-    qt_1= Adafruit_FreeTouch(A2, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+     Adafruit_FreeTouch qt_1= Adafruit_FreeTouch(A2, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
   if (dataA3>900)
   {
     Serial.print("Alta capacitancia A3 <");
-    qt_1= Adafruit_FreeTouch(A3, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+     Adafruit_FreeTouch qt_1= Adafruit_FreeTouch(A3, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
     if (dataA4>900)
   {
     Serial.print("Alta capacitancia A4 down");
-    qt_1= Adafruit_FreeTouch(A4, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+     Adafruit_FreeTouch qt_1= Adafruit_FreeTouch(A4, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
     if (dataA5>900)
   {
     Serial.print("Alta capacitancia A5 up ");
-    qt_1= Adafruit_FreeTouch(A5, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+     Adafruit_FreeTouch qt_1= Adafruit_FreeTouch(A5, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
     if (dataA6>900)
   {
     Serial.print("Alta capacitancia A6 w");
-    qt_1= Adafruit_FreeTouch(A6, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+   Adafruit_FreeTouch qt_1= Adafruit_FreeTouch(A6, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
     if (dataA7>900)
   {
     Serial.print("Alta capacitancia A7 a");
-    qt_1= Adafruit_FreeTouch(A7, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+     Adafruit_FreeTouch qt_1= Adafruit_FreeTouch(A7, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
       if (dataA8>900)
   {
     Serial.print("Alta capacitancia A8 clk");
-    qt_1= Adafruit_FreeTouch(A8, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+     Adafruit_FreeTouch qt_1= Adafruit_FreeTouch(A8, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
     if (dataA9>900)
   {
     Serial.print("Alta capacitancia A9 space");
-    qt_1= Adafruit_FreeTouch(A9, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+     Adafruit_FreeTouch qt_1= Adafruit_FreeTouch(A9, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
 }
