@@ -98,8 +98,6 @@ int pressThreshold;
 int releaseThreshold;
 boolean inputChanged;
 int mouseMovementCounter = 0; // for sending mouse movement events at a slower interval
-boolean flag = 0;
-long datastant=0;
 
 
 int mouseHoldCount[NUM_INPUTS]; // used to store mouse movement hold data
@@ -154,7 +152,6 @@ void loop() {
   updateInputStates();
   sendMouseButtonEvents();
   sendMouseMovementEvents();
-  flag=1;
   #ifdef DEBUG
     delay(100);
   #endif
@@ -177,18 +174,10 @@ void updateMeasurementBuffers() {
     // make the new measurement
     long newState = (p[i]->measure());
     boolean newMeasurement = ((abs(newState - inputs[i].touch) > CALIBRATION) ? 0 : 1);
-    array datastart;
-    
     
     #ifdef DEBUG
-    if (flag==0)
-     {
-      for(i=0 ; i<10; ++i)
-       datastart = p[i];
-      }   
       Serial.print(p[i]->measure());
       Serial.print(",");
-      
     #endif
     // invert so that true means the switch is closed
     newMeasurement = !newMeasurement; 
@@ -521,9 +510,104 @@ when the chip is initialized. So, basically ... connect all your wires, electrod
 fruit, etc...then start up the capacitive touch program!
 */
 void calibrate(){
+
+  int dataA0=0;
+  int dataA1=0;
+  int dataA2=0;
+  int dataA3=0;
+  int dataA4=0;
+  int dataA5=0;
+  int dataA6=0;
+  int dataA7=0;
+  int dataA8=0;
+  int dataA9=0;
+  
   for (int i=0; i<NUM_INPUTS; i++) {
     // make a new measurement for initial calibration
     long newState = (p[i]->measure());
     inputs[i].touch = newState;
+  }
+  
+  dataA0=qt_0.measure();
+  dataA1=qt_1.measure();
+  dataA2=qt_2.measure();
+  dataA3=qt_3.measure();
+  dataA4=qt_4.measure();
+  dataA5=qt_5.measure();
+  dataA6=qt_6.measure();
+  dataA7=qt_7.measure();
+  dataA8=qt_8.measure();
+  dataA9=qt_9.measure(); 
+  
+    Serial.print("dataA0: "); 
+    Serial.println(dataA0);
+    Serial.print("dataA1: "); 
+    Serial.println(dataA1);
+    Serial.print("dataA2: "); 
+    Serial.println(dataA2);
+    Serial.print("dataA3: "); 
+    Serial.println(dataA3);
+    Serial.print("dataA4: "); 
+    Serial.println(dataA4);
+    Serial.print("dataA5: "); 
+    Serial.println(dataA5);
+    Serial.print("dataA6: "); 
+    Serial.println(dataA6);
+    Serial.print("dataA7: "); 
+    Serial.println(dataA7);
+    Serial.print("dataA8: "); 
+    Serial.println(dataA8);
+    Serial.print("dataA9: "); 
+    Serial.println(dataA9);
+    
+  if (dataA0>900)
+  {
+    Serial.print("Alta capacitancia A0 S");
+    qt_1= Adafruit_FreeTouch(A0, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+  }
+  if (dataA1>900)
+  {
+    Serial.print("Alta capacitancia A1 D");
+    qt_1= Adafruit_FreeTouch(A1, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+  }
+  if (dataA2>900)
+  {
+    Serial.print("Alta capacitancia A2 >");
+    qt_1= Adafruit_FreeTouch(A2, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+  }
+  if (dataA3>900)
+  {
+    Serial.print("Alta capacitancia A3 <");
+    qt_1= Adafruit_FreeTouch(A3, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+  }
+    if (dataA4>900)
+  {
+    Serial.print("Alta capacitancia A4 down");
+    qt_1= Adafruit_FreeTouch(A4, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+  }
+    if (dataA5>900)
+  {
+    Serial.print("Alta capacitancia A5 up ");
+    qt_1= Adafruit_FreeTouch(A5, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+  }
+    if (dataA6>900)
+  {
+    Serial.print("Alta capacitancia A6 w");
+    qt_1= Adafruit_FreeTouch(A6, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+  }
+    if (dataA7>900)
+  {
+    Serial.print("Alta capacitancia A7 a");
+    qt_1= Adafruit_FreeTouch(A7, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+  }
+      if (dataA8>900)
+  {
+    Serial.print("Alta capacitancia A8 clk");
+    qt_1= Adafruit_FreeTouch(A8, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
+  }
+    if (dataA9>900)
+  {
+    Serial.print("Alta capacitancia A9 space");
+    qt_1= Adafruit_FreeTouch(A9, OVERSAMPLE_8, RESISTOR_100K, FREQ_MODE_NONE);
   }
 }
